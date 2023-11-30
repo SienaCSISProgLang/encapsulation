@@ -63,27 +63,27 @@ void Ratio::reduce()
 }
 
 // add a Ratio object to this Ratio, updating this Ratio to the new value
-void Ratio::addToThis(Ratio r)
+void Ratio::addToThis(Ratio *r)
 {
-    numerator = numerator * r.denominator + r.numerator * denominator;
-    denominator = denominator * r.denominator;
+    numerator = numerator * r->denominator + r->numerator * denominator;
+    denominator = denominator * r->denominator;
 }
 
 // add another Ratio object to this Ratio and return a new Ratio
-Ratio Ratio::add(Ratio r)
+Ratio *Ratio::add(Ratio *r)
 {
-    Ratio result;
-    result.numerator = numerator * r.denominator + r.numerator * denominator;
-    result.denominator = denominator * r.denominator;
+    Ratio *result = new Ratio();
+    result->numerator = numerator * r->denominator + r->numerator * denominator;
+    result->denominator = denominator * r->denominator;
     return result;
 }
 
 // static method to add two Ratio objects and return a new Ratio
-Ratio Ratio::add(Ratio r1, Ratio r2)
+Ratio *Ratio::add(Ratio *r1, Ratio *r2)
 {
-    Ratio result;
-    result.numerator = r1.numerator * r2.denominator + r2.numerator * r1.denominator;
-    result.denominator = r1.denominator * r2.denominator;
+    Ratio *result = new Ratio();
+    result->numerator = r1->numerator * r2->denominator + r2->numerator * r1->denominator;
+    result->denominator = r1->denominator * r2->denominator;
     return result;
 }
 Ratio::~Ratio()

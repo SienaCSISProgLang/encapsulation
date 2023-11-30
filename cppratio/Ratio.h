@@ -16,8 +16,8 @@ public:
     int getNumerator();
     int getDenominator();
     void reduce();
-    Ratio add(Ratio other);
-    void addToThis(Ratio other);
-    static Ratio add(Ratio r1, Ratio r2);
+    Ratio *add(Ratio *other);
+    void addToThis(Ratio *other);
+    static Ratio *add(Ratio *r1, Ratio *r2);
 
 };
