@@ -79,7 +79,7 @@ Ratio Ratio::add(Ratio r)
 }
 
 // static method to add two Ratio objects and return a new Ratio
-static Ratio Ratio::add(Ratio r1, Ratio r2)
+Ratio Ratio::add(Ratio r1, Ratio r2)
 {
     Ratio result;
     result.numerator = r1.numerator * r2.denominator + r2.numerator * r1.denominator;
