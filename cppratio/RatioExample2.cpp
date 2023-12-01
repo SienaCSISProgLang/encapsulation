@@ -4,23 +4,40 @@
 #include "Ratio.h"
 #include <iostream>
 
+// a global Ratio, static allocation
+Ratio r_glob;
+
 int main() {
     
-    // pointers to some ratios
+    // pointers to some ratios to use later
     Ratio *r1, *r2, *ans;
 
-    // pointer to a dynamically-allocated array of Ratio pointers
+    // a stack-dynamic Ratio, using default constructor
+    Ratio r3;
+
+    // another stack-dynamic Ratio initialized to 3/4
+    Ratio r4(3, 4);
+
+    // pointer to a dynamically heap-allocated array of Ratio pointers
     Ratio **r_array1;
 
-    // a statically-allocated array of Ratio pointers
+    // a stack-dynamic allocated array of Ratio pointers
     Ratio *r_array2[3];
 
-    // a statically-allocated array of Ratio objects (not pointers) 
+    // a stack-dynamic array of Ratio objects (not pointers) 
     Ratio r_array3[3];
 
     int i;
 
-    // create some Ratio objects
+    // give r_glob some values
+    r_glob.setNumerator(1);
+    r_glob.setDenominator(2);
+    // print r_glob
+    std::cout << "r_glob is ";
+    r_glob.print();
+    std::cout << std::endl;
+
+    // construct some Ratio objects
     r1 = new Ratio(1, 3);
     r2 = new Ratio(1, 6);
 
@@ -65,6 +82,61 @@ int main() {
 
     // free the memory of the dynamically-allocated array
     delete [] r_array1;
+
+    // add the two in the stack-allocated array and store the new Ratio in the third
+    r_array2[2] = Ratio::add(r_array2[0], r_array2[1]);
+
+    // print this addition problem
+    r_array2[0]->print();
+    std::cout << " + ";
+    r_array2[1]->print();
+    std::cout << " = ";
+    r_array2[2]->print();
+    std::cout << std::endl;
+
+    // free the memory of the Ratios in r_array2
+    for (i = 0; i < 3; i++) {
+        delete r_array2[i];
+    }
+
+    // put some values in r_array3
+    r_array3[0].setNumerator(10);
+    r_array3[0].setDenominator(13);
+    r_array3[1].setNumerator(4);
+    r_array3[1].setDenominator(10);
+    r_array3[2].setNumerator(8);
+    r_array3[2].setDenominator(9);
+
+    // Reduce and print the Ratios in r_array3
+    for (i = 0; i < 3; i++) {
+        r_array3[i].print();
+        std::cout << " reduced is ";
+        r_array3[i].reduce();
+        r_array3[i].print();
+        std::cout << std::endl;
+    }
     
+    // Set the numerator and denominator of our stack-dynamic allocated Ratio that used the default constructor
+    r3.setNumerator(6);
+    r3.setDenominator(27);
+    // print r3
+    std::cout << "r3 before reduce is ";
+    r3.print();
+    std::cout << std::endl;
+    // reduce r3
+    r3.reduce();
+    // print r3 again
+    std::cout << "r3 after reduce is ";
+    r3.print();
+    std::cout << std::endl;
+
+    // now add r3 to the other stack-dynamic Ratio, r4
+    std::cout << "r4 before adding r3 is ";
+    r4.addToThis(r3);
+    // print r4
+    std::cout << "r4 after adding r3 is ";
+    r4.print();
+    std::cout << std::endl;
+
     return 0;
 }

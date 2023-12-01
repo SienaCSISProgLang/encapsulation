@@ -1,7 +1,11 @@
+cppratio/RatioExample
+cppratio/RatioExample2
+
 # Prerequisites
 *.d
 
 # Compiled Object files
+*.class
 *.slo
 *.lo
 *.o

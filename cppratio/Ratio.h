@@ -18,6 +18,7 @@ public:
     void reduce();
     Ratio *add(Ratio *other);
     void addToThis(Ratio *other);
+    void addToThis(Ratio other);
     static Ratio *add(Ratio *r1, Ratio *r2);
 
 };

@@ -9,6 +9,9 @@ Ratio::Ratio(int n, int d)
 {
     numerator = n;
     denominator = d;
+    std::cout << "Ratio constructor called on ";
+    print();
+    std::cout << std::endl;
 }
 
 // default constructor that initializes to 1/1  
@@ -16,6 +19,9 @@ Ratio::Ratio()
 {
     numerator = 1;
     denominator = 1;
+    std::cout << "Ratio default constructor called on ";
+    print();
+    std::cout << std::endl;
 }
 
 // method to print a Ratio in n/d format
@@ -69,6 +75,13 @@ void Ratio::addToThis(Ratio *r)
     denominator = denominator * r->denominator;
 }
 
+// add a Ratio object to this Ratio, updating this Ratio to the new value
+void Ratio::addToThis(Ratio r)
+{
+    numerator = numerator * r.denominator + r.numerator * denominator;
+    denominator = denominator * r.denominator;
+}
+
 // add another Ratio object to this Ratio and return a new Ratio
 Ratio *Ratio::add(Ratio *r)
 {
@@ -88,4 +101,7 @@ Ratio *Ratio::add(Ratio *r1, Ratio *r2)
 }
 Ratio::~Ratio()
 {
+    std::cout << "Ratio destructor called on ";
+     print();
+    std::cout << std::endl;
 }
