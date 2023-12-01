@@ -7,6 +7,8 @@
   Similar examples exist in many places, this is based on an example at 
   http://code.stephenmorley.org/articles/java-generics-type-erasure/
 
+  Minor update for CSIS-340, Siena College, Fall 2023
+
 */
 
 import java.util.ArrayList;
@@ -41,6 +43,7 @@ public class JavaErasure {
 	// to make sure the thing coming out is in fact still a
 	// String, which it's not, hence a ClassCastException
 	String whatElseIPut = someStrings.get(1);
+	System.out.println("The second element is " + whatElseIPut);
 
     }
 
